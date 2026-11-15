@@ -69,6 +69,8 @@ git clone https://github.com/zouchenzhen/apple-feature-lab.git
 
 本包需要本地终端和设备连接能力才能运行 USB 脚本；单纯导入 skill 不会给纯网页聊天增加这些能力。当前执行脚本以 Windows、Python 3.11+ 为主，macOS 的第三方教程来源不等于本包已完成跨平台实测。
 
+Siri 模块使用的 GestaltX 1.1.1，本机 MobileGestalt 访问支持 iOS／iPadOS 27.x，26.x 不支持这条路线；IPA 能安装不等于能读取或修改。详细范围及社区案例见 [系统兼容性说明](references/siri-chatgpt.md#支持的系统版本先分清能安装和能读取)。这个限制不套用到独立的耳机配件定位工具。
+
 ## 脚本与离线验证
 
 参数、依赖、输出和错误处理见 [脚本说明](references/scripts.md)。定位脚本默认只生成计划，发送模式需要明确指定坐标；只读缓存比较不修改输入文件。

@@ -27,6 +27,7 @@
 
 ## 提示词出处与原理研究
 
+- **[LINUX SB：国行 iPhone Air 与 18 系列写境外 eSIM 的社区实操](https://linux.sb/topic/30986)**。作者使用 iPhone Air、iOS 27.3 beta 和 GestaltX 1.0.3，包含 App Group、开发者模式、保留销售地区、AI 配置及备份经验。其“26.x 不支持”的说法已结合本文使用的 GestaltX 1.1.1 官方源码进一步限定为本机 MobileGestalt 访问；账号条件和 eSIM 附加选项仍属于该作者的经验，不能自动成为本项目的实测支持。具体整理见 [Siri 兼容性说明](siri-chatgpt.md#支持的系统版本先分清能安装和能读取)。
 - **[V2EX：把这段话给 Codex 免费开启高血压通知](https://www.v2ex.com/t/1248960)**，2026 年 10 月。公开帖介绍 macOS、本地 MFi-v3 认证、USB CarKit/iAP2 与香港 NMEA 提示词，作者也链接了 `accessory-location`。这是追溯手表教程技术路线的公开来源之一。
 - **[修改 iOS 定位的几种方法](https://nvme0n1p.dev/posts/ios-location-modify)**，2026 年 4 月 22 日。比较开发者模拟定位与 iAP2 配件定位，并讨论爱思和 AnyGo 的实现思路，适合理解为什么“地图位置已改变”与功能资格可能是不同结果。
 - **[Lagrange Point：Bypassing regulatory locks, Faraday cages and upgrading your hearing](https://lagrangepoint.substack.com/p/airpods-hearing-aid-hacking)**，2024 年 11 月 12 日。记录 AirPods Pro 2、iOS 18.1 的监管地区与 Wi-Fi 定位实验，是理解原理的历史资料；其中具体方法要结合当前系统重新判断。

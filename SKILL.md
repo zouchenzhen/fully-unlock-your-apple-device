@@ -35,6 +35,8 @@ description: "启用、诊断或恢复 Apple 设备的地区受限功能：iPhon
 
 ### Siri／ChatGPT
 
+先核对 [Siri 模块的系统兼容性](references/siri-chatgpt.md#支持的系统版本先分清能安装和能读取)。本文固定的 GestaltX 1.1.1 本机 MobileGestalt 访问支持 iOS／iPadOS 27.x，不支持 26.x；最低安装版本与底层漏洞范围不能代替目标缓存访问能力。未来主版本先核对新的工具证据，不跳过版本判断。该限制不套用到 AirPods 的独立配件定位流程。
+
 1. 先识别目标是现有 Siri 的 ChatGPT 扩展还是独立的 Siri AI Beta。两者的菜单、语言和服务资格分别判断。
 2. GestaltX 安装成功后先验证可用 App Group，并让用户读取 MobileGestalt。`no usable App Group` 表示签名问题，未证明系统版本不兼容；此时不得继续修改字段。保留分享扩展，不能只注入 profile 未授权的 entitlement。
 3. 读取后，保留原始缓存与 App 正式导出的设备证明文件。核实已有整机备份的日期和完成状态，再决定是否需要新备份，不自动启动全量备份。

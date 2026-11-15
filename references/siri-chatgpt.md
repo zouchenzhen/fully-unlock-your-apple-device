@@ -23,6 +23,27 @@ GestaltX 通过沙盒逃逸漏洞访问系统的 MobileGestalt 缓存，并修�
 
 本文实际完成的是 Siri 中的 ChatGPT 扩展。全新的 **Siri AI（Beta）** 有独立的语言、账号地区和服务资格要求，本次没有通过强制写入 `SiriMode = 2` 来开启它，也没有把 FaceTime、eSIM 或手表功能算作同时开通。
 
+## 支持的系统版本：先分清能安装和能读取
+
+本文使用的 **GestaltX 1.1.1** 将本机 MobileGestalt 访问范围列为 **iOS／iPadOS 27.x**；**26.x 不支持这条本机缓存访问路线**。这项范围来自该版本的 [官方 Compatibility 说明](https://github.com/huamidev/GestaltX/blob/f34d5a7271c14e540edb58e328dc9c06f8f3368f/README.md#compatibility)，不只是论坛经验。
+
+| 层级 | 应该怎样判断 |
+| --- | --- |
+| IPA 可以安装 | 1.1.1 的最低安装版本是 26.0，只说明安装门槛，不说明能修改目标缓存 |
+| 工具显示 Supported | 该版本源码判断系统主版本是否为 27，不检查签名是否完整，也不保证每项功能可用 |
+| 本机缓存可以访问 | 需要符合工具支持范围、具备有效 App Group，并实际读到 Connected |
+| 功能可以使用 | 还要确认设备条件、语言、地区、资源下载与服务端资格，最后实际调用验证 |
+
+底层 worse_query 对部分 26.x 系统的沙盒逃逸支持，不等于 GestaltX 可以访问这次需要的 SystemGroup 缓存路径。也不要因此把“26.x 不支持”推广到所有工具、所有功能或纯本地 plist 文件编辑。
+
+我已实测的组合是 **iPhone 17 Pro＋iOS 27.3（24C5037i）＋GestaltX 1.1.1**。其它 27.x 版本也要核对当前工具说明与实际读取结果；未来主版本不自动算作支持，不能仅靠跳过版本判断继续写入。
+
+### 这篇社区经验可以怎样参考
+
+[LINUX SB 的相关帖子](https://linux.sb/topic/30986)记录了另一位作者的 **国行 iPhone Air＋iOS 27.3 beta＋GestaltX 1.0.3**。其中 App Group、主应用与扩展同组、开发者模式、地区代码与销售地区分开，以及先备份再修改的经验，都值得一起参考。
+
+作者对账号写的是“可能设置和 App Store 都得用外区账号”，并说明没有测试国区账号；这不能直接变成必须退出主 iCloud 的要求。作者的 eSIM／GreenTea 附加选项属于另一组功能变更，本包没有实测，也不纳入这里的两项 AI 修改。
+
 ## 1. 准备工具和备份
 
 本次使用：
@@ -37,6 +58,8 @@ GestaltX 通过沙盒逃逸漏洞访问系统的 MobileGestalt 缓存，并修�
 ```text
 0621b070cafacb2f1f83fad459697d02263e513b04d77b462da333c5b0a4e708
 ```
+
+官方 README 还记录过 Safari 下载文件不完整的反馈。若提示 IPA 损坏或不能解压，先从官方发行页重新下载、换浏览器，并核对大小与哈希，不要直接判定为系统不兼容。其它版本应使用它自己的发行哈希，不能套用上面这个值。
 
 先检查现有整机备份。如果已有较新的已完成加密备份，是否重做全量可根据新增数据决定；**当前 MobileGestalt 的原始文件仍要另外导出**，两种备份的作用不同。
 
@@ -191,5 +214,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Start-IloaderW
 - [Apple：在 iPhone 开启 ChatGPT](https://support.apple.com/guide/iphone/turn-on-chatgpt-iph00fd3c8c2/ios)。
 - [Apple：获取 Siri AI](https://support.apple.com/en-us/127893)。
 - [Apple 中国保修条款](https://www.apple.com/legal/warranty/products/ios-warranty-china.html)。
+- [GestaltX 1.1.1 系统兼容说明](https://github.com/huamidev/GestaltX/blob/f34d5a7271c14e540edb58e328dc9c06f8f3368f/README.md#compatibility)与 [VersionSupport.swift](https://github.com/huamidev/GestaltX/blob/f34d5a7271c14e540edb58e328dc9c06f8f3368f/GestaltX/VersionSupport.swift)。
+- [LINUX SB：国行 iPhone Air 与 18 系列写境外 eSIM 的社区实操](https://linux.sb/topic/30986)：其中的 AI、签名和版本经验作为补充参考，eSIM 并非本项目已验证模块。
 
 Mac 上 Clash／Mihomo 的 Siri 代理 skill 等补充资料，见 [相关项目与延伸阅读](related-projects.md)。
