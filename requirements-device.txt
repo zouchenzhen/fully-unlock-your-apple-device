@@ -1,0 +1,4 @@
+# Install only when using the local USB/device scripts.
+pymobiledevice3==9.40.0
+cryptography>=43
+pywin32>=306; sys_platform == 'win32'
