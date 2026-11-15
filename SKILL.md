@@ -1,9 +1,9 @@
 ---
-name: apple-feature-lab
+name: fully-unlock-your-apple-device
 description: "启用、诊断或恢复 Apple 设备的地区受限功能：iPhone Siri/ChatGPT、AirPods Pro 听力健康，以及尚未实测的 Apple Watch 高血压通知。用于检查兼容性、签名、USB 配件定位、语言和网络条件并验证效果；不用于泛化越狱、激活锁、运营商解锁或未登记功能。"
 ---
 
-# Apple 功能启用与排错
+# Fully Unlock Your Apple Device
 
 根据用户要开启的具体功能选择模块，沿当前失败层排查，保留可恢复的原始状态。操作说明与实测记录以本包为入口，动态兼容性以当前官方来源和实际设备为准。
 

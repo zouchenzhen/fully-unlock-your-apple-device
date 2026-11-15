@@ -326,7 +326,7 @@ class CancellationTests(unittest.IsolatedAsyncioTestCase):
                 return bridge if name == location.PACKAGE + ".cli" else SimpleNamespace(list_devices=devices)
             previous_path = list(sys.meta_path)
             try:
-                with patch.dict(os.environ, {"APPLE_FEATURE_LAB_WORKER": "1",
+                with patch.dict(os.environ, {"FULLY_UNLOCK_YOUR_APPLE_DEVICE_WORKER": "1",
                                              "IAP2_LOCATION_BRIDGE_WINDOWS_KEY_FILE": "original-secret"}), \
                      patch.object(sys, "stdin", io.StringIO("start\n")), \
                      patch.object(location, "validate_bridge", return_value=root), \

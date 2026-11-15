@@ -1,4 +1,4 @@
 interface:
-  display_name: "Apple 功能启用与排错"
+  display_name: "Fully Unlock Your Apple Device"
   short_description: "检查设备条件，按实测流程启用 Apple 功能并处理常见故障"
-  default_prompt: "使用 $apple-feature-lab 检查我的设备条件，并按对应模块帮助我启用或排查 Apple 功能。"
+  default_prompt: "使用 $fully-unlock-your-apple-device 检查我的设备条件，并按对应模块帮助我启用或排查 Apple 功能。"

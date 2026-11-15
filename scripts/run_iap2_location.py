@@ -173,7 +173,7 @@ async def connect_one_usb(list_devices, create_phone):
 
 async def worker(args):
     # The parent assigns process containment before releasing this gate.
-    if os.environ.get("APPLE_FEATURE_LAB_WORKER") != "1" or sys.stdin.readline().strip() != "start":
+    if os.environ.get("FULLY_UNLOCK_YOUR_APPLE_DEVICE_WORKER") != "1" or sys.stdin.readline().strip() != "start":
         raise RuntimeError("Worker must be started by its supervisor")
     logging.disable(logging.CRITICAL)
     root = validate_bridge(args.bridge_root)
@@ -272,7 +272,7 @@ class WindowsJob:
 
 def supervise(command, timeout, control_file, stop_file=None):
     started = time.monotonic()
-    environment = dict(os.environ, APPLE_FEATURE_LAB_WORKER="1")
+    environment = dict(os.environ, FULLY_UNLOCK_YOUR_APPLE_DEVICE_WORKER="1")
     process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace",
                                env=environment, start_new_session=os.name != "nt",
@@ -406,7 +406,7 @@ def main(argv=None):
                 raise ValueError("Missing supervisor control path")
             asyncio.run(worker(args))
             return 0
-        with tempfile.TemporaryDirectory(prefix="apple-feature-lab-") as directory:
+        with tempfile.TemporaryDirectory(prefix="fully-unlock-your-apple-device-") as directory:
             control = Path(directory) / "stop"
             original = list(sys.argv[1:] if argv is None else argv)
             command = [sys.executable, "-u", str(Path(__file__).resolve()), *original,

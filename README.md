@@ -1,6 +1,15 @@
-# Apple Feature Lab
+# Fully Unlock Your Apple Device
 
-**Apple 功能启用与排错：给人看的实操记录，也给 AI 用的 Agent Skill。**
+一个用于 Apple 设备功能启用与排错的本地 Agent Skill。以 Windows 实操为主，整理国行 iPhone 的 Siri／ChatGPT、AirPods Pro 3 听力健康，以及实验性的 Apple Watch 高血压通知流程，并提供备份、诊断和恢复辅助脚本。
+
+[English README](README.en.md)
+
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)
+![Python](https://img.shields.io/badge/python-3.11%2B-3776AB.svg)
+![Skill](https://img.shields.io/badge/skill-Codex%20%2F%20Agent-orange.svg)
+
+---
 
 我在 Windows 上完成了国行 iPhone 的 Siri／ChatGPT 扩展配置，以及 AirPods Pro 3 德国地区听力功能入口的开启。这里保留有效步骤、踩坑经过和恢复方法，并加入尚未实测的 Apple Watch 高血压通知教程模块。
 
@@ -39,30 +48,32 @@
 
 ## 使用这个 skill
 
-项目地址：[zouchenzhen/apple-feature-lab](https://github.com/zouchenzhen/apple-feature-lab)。
+项目地址：[zouchenzhen/fully-unlock-your-apple-device](https://github.com/zouchenzhen/fully-unlock-your-apple-device)。
 
 先取得仓库：
 
 ```powershell
-git clone https://github.com/zouchenzhen/apple-feature-lab.git
+git clone https://github.com/zouchenzhen/fully-unlock-your-apple-device.git
 ```
 
-包名：`apple-feature-lab`。统一入口是 [SKILL.md](SKILL.md)，它按目标加载对应模块。
+包名：`fully-unlock-your-apple-device`。统一入口是 [SKILL.md](SKILL.md)，它按目标加载对应模块。
 
-在本地 Codex 中，将整个 `apple-feature-lab` 目录放到当前项目的 `.agents/skills/` 下，或放到用户的 `~/.agents/skills/` 中。也可以在任务中明确提供当前 `SKILL.md` 的本地路径。当前主机如有不同的技能安装规则，以主机的技能管理入口为准。
+项目原名为 `apple-feature-lab`。旧版用户更新时，请同步改用新目录名与新的 skill 调用名。
+
+在本地 Codex 中，将整个 `fully-unlock-your-apple-device` 目录放到当前项目的 `.agents/skills/` 下，或放到用户的 `~/.agents/skills/` 中。也可以在任务中明确提供当前 `SKILL.md` 的本地路径。当前主机如有不同的技能安装规则，以主机的技能管理入口为准。
 
 可用这样的任务开始：
 
 ```text
-使用 $apple-feature-lab，先检查我的 iPhone 条件，再帮助我配置 Siri 的 ChatGPT 扩展。
+使用 $fully-unlock-your-apple-device，先检查我的 iPhone 条件，再帮助我配置 Siri 的 ChatGPT 扩展。
 ```
 
 ```text
-使用 $apple-feature-lab，帮我检查 AirPods Pro 3 的听力保护和 EN 352 功能，先说明当前可执行的步骤。
+使用 $fully-unlock-your-apple-device，帮我检查 AirPods Pro 3 的听力保护和 EN 352 功能，先说明当前可执行的步骤。
 ```
 
 ```text
-使用 $apple-feature-lab，先解释 Apple Watch 高血压通知的官方条件和未实测教程，不要修改设备。
+使用 $fully-unlock-your-apple-device，先解释 Apple Watch 高血压通知的官方条件和未实测教程，不要修改设备。
 ```
 
 默认允许 AI 根据任务自动选择本 skill，但发现 skill 不代表获准自动修改设备。明确只做分析时，它应停在分析；用户授权执行后，再推进该模块。
@@ -96,3 +107,15 @@ python -m unittest discover -s tests -v
 更多同类 skill、其它定位路线、公开提示词出处与原理研究，见 [相关项目与延伸阅读](references/related-projects.md)。本项目侧重把成熟工具与 Windows 实操排错整理成可复现流程，并保留清楚的来源与验证范围。
 
 本包原创文档和辅助脚本使用 [MIT 许可证](LICENSE)。引用、调用或另行下载的上游代码继续遵守各自许可证；本包不重新授权这些项目或第三方认证材料。没有打包 IPA、注册机、签名证书、MFi 私钥、配对文件、私人缓存或群聊原图。
+
+## 社区
+
+[LINUX DO — 中文开发者社区](https://linux.do/)
+
+## Star History
+
+如果这些记录帮你少走了弯路，欢迎给个 ⭐，也欢迎提交复现结果和改进建议。
+
+[![Star History Chart](https://api.star-history.com/svg?repos=zouchenzhen/fully-unlock-your-apple-device&type=Date)](https://star-history.com/#zouchenzhen/fully-unlock-your-apple-device&Date)
+
+本项目认可并感谢 LINUX DO 社区在中文开发者开源交流、项目分享和技术讨论中的价值。希望这些实操记录也能为社区提供一点可复现、可继续改进的经验。
